@@ -42,13 +42,13 @@ public class Soul : MonoBehaviour {
             }
         }
 
-        if(Vector3.Distance(transform.position, nextPos) <= 0.25f) {
-            float min = 0.2f;
-            float max = 0.8f;
+        if(Vector3.Distance(transform.position, nextPos) <= 0.1f) {
+            float min = 0.1f;
+            float max = 0.9f;
             nextPos = Camera.main.ViewportToWorldPoint(new Vector3(Random.Range(min, max), Random.Range(min, max), 1f));
         }
 
-        transform.position = Vector3.MoveTowards(transform.position, nextPos, 0.1f);
+        transform.position = Vector3.MoveTowards(transform.position, nextPos, 0.075f);
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {

@@ -26,7 +26,7 @@ public class GameController : MonoBehaviour {
         }
 
         tmrInstructions += Time.deltaTime;
-        if(tmrInstructions >= 3f) {
+        if(tmrInstructions >= 3.5f) {
             instructionsFade = true;
             tmrInstructions = 0;
         }

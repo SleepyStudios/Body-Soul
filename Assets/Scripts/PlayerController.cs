@@ -16,11 +16,12 @@ public class PlayerController : MonoBehaviour {
 
         if (GameController.instance.lost) return;
 
-        float speed = 15f * (1f / transform.localScale.x);
+        float speed = 12f * (1f / transform.localScale.x);
 
         // Horizontal movement
         int xUnitSpeed = (int)Input.GetAxisRaw("Horizontal");
         float xSpeed = xUnitSpeed * speed * Time.deltaTime;
+        GetComponent<SpriteRenderer>().flipX = xSpeed > 0;
 
         // Vertical movement
         int yUnitSpeed = (int)Input.GetAxisRaw("Vertical");

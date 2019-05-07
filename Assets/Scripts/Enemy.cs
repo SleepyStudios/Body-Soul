@@ -62,11 +62,12 @@ public class Enemy : MonoBehaviour {
             collision.gameObject.GetComponent<Soul>().health -= 10f;
             GameController.instance.PlaySound("Damage" + Random.Range(0, 6));
 
-            if(collision.gameObject.GetComponent<Soul>().health <= 0f) {
+            tarScale = Mathf.Clamp(tarScale - 1f, 0f, 1f);
+            if (tarScale <= 0f) OnDeath();
+
+            if (collision.gameObject.GetComponent<Soul>().health <= 0f) {
                 GameController.instance.OnLose();
             }
-
-            Destroy(gameObject);
         } else if(collision.gameObject.tag == "Enemy" && tag == "Ally" && !collision.gameObject.GetComponent<Enemy>().dead) {
             collision.gameObject.GetComponent<Enemy>().OnDeath();
 
@@ -90,6 +91,7 @@ public class Enemy : MonoBehaviour {
             }
 
             gameObject.tag = "Ally";
+            gameObject.layer = 9;
             speed += 1f;
             tarScale = 2f;
 
